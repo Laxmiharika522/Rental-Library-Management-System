@@ -1,0 +1,83 @@
+.confirm-rental {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.confirm-rental h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #1f2937;
+}
+
+.confirm-rental img {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.confirm-rental img:hover {
+  transform: scale(1.05);
+}
+
+.confirm-rental h3 {
+  margin: 10px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.confirm-rental p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.confirm-rental label {
+  display: block;
+  margin: 15px 0;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.confirm-rental input[type="number"] {
+  width: 70px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.confirm-rental button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.confirm-rental button:first-child {
+  background-color: #f3f4f6;
+  color: #333;
+}
+
+.confirm-rental button:first-child:hover {
+  background-color: #e5e7eb;
+}
+
+.confirm-rental button:last-child {
+  background-color: #FF6B35;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.confirm-rental button:last-child:hover {
+  background-color: #1d4ed8;
+}

@@ -1,0 +1,116 @@
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Dashboard Page Container */
+.admin-dashboard {
+  padding: 50px 40px;
+  min-height: 100vh;
+  background-color: #FFF9E6;
+  color: #4A1640;
+}
+
+/* Dashboard Title */
+.admin-dashboard h1 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #6A1E55;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* Stats Grid Layout */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Stat Card */
+.stat-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(214, 28, 78, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #FFE4A3;
+}
+
+.stat-card h3 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #8B4F7F;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.stat-card p {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #D61C4E;
+  margin-bottom: 10px;
+}
+
+/* Status Highlights */
+.stat-card p.available {
+  color: #10b981;
+}
+
+/* Interactive Card Styling */
+.stat-card.clickable {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card.clickable:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+  border-color: #FFB200;
+}
+
+/* Action Links inside cards */
+.manage-link, .view-link {
+  font-size: 0.9rem;
+  color: #FF6B35;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  transition: gap 0.2s, color 0.2s;
+}
+
+.manage-link:hover, .view-link:hover {
+  color: #D61C4E;
+}
+
+.stat-card.clickable:hover .manage-link {
+  gap: 8px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 30px 20px;
+  }
+
+  .admin-dashboard h1 {
+    font-size: 1.8rem;
+  }
+
+  .stat-card p {
+    font-size: 2.2rem;
+  }
+}

@@ -1,0 +1,90 @@
+/* Home.css */
+:root {
+    --primary-blue: #D61C4E;
+    --secondary-pink: #f472b6;
+    --text-dark: #1f2937;
+    --section-padding: 80px 10%;
+}
+
+.home-container { overflow-x: hidden; background-color: #FFF9E6; }
+
+.home-fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to {opacity:1; transform:translateY(0);} }
+
+/* Common Section Styling */
+.section-wrapper {
+    padding: var(--section-padding);
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-pink));
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Media Grid */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Book Cards */
+.book-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.book-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 16px 35px rgba(79,70,229,0.3);
+}
+
+.book-card img { width: 100%; border-radius: inherit; }
+
+/* Rental Badge */
+.rental-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(45deg, var(--secondary-pink), var(--primary-blue));
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.rental-badge.popular { animation: pulseBadge 1.5s infinite; }
+
+@keyframes pulseBadge { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);} }

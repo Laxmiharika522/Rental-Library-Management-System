@@ -1,0 +1,146 @@
+/* =================== CATEGORY BOOKS CONTAINER =================== */
+.category-books-container {
+    padding: 2rem;
+    background-color: #FFF9E6;
+    text-align: center;
+    min-height: 100vh;
+}
+
+/* ----------------- Category Title ----------------- */
+.category-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #6A1E55;
+}
+
+/* =================== SEARCH BAR =================== */
+.search-bar {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 2rem auto;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    border: 2px solid #FFD4A8;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.search-bar input:focus {
+    border-color: #FF6B35;
+    box-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
+}
+
+/* =================== BOOKS GRID =================== */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* =================== PAGINATION =================== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.pagination button {
+    min-width: 40px;
+    height: 40px;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: none;
+    background: #FFE4D1;
+    color: #6A1E55;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination button:hover:enabled {
+    background: linear-gradient(135deg, #FF6B35, #FFB200);
+    color: white;
+}
+
+.pagination button:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.pagination span {
+    font-weight: 600;
+    color: #6A1E55;
+}
+
+/* =================== RESPONSIVE GRID =================== */
+@media (max-width: 1400px) {
+    .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.8rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .category-books-container {
+        padding: 1.5rem;
+    }
+    .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.6rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.3rem;
+    }
+    .category-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+    .category-books-container {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .books-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 400px;
+    }
+    .category-title {
+        font-size: 1.5rem;
+    }
+    .search-bar input {
+        font-size: 0.95rem;
+        padding: 0.65rem 0.9rem;
+    }
+}

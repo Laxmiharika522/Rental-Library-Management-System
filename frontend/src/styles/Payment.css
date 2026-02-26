@@ -1,0 +1,83 @@
+.payment-container {
+  max-width: 700px; /* increased max width */
+  margin: 50px auto;
+  padding: 40px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background: #f0f4f8; /* subtle background */
+  border-radius: 12px;
+}
+
+.payment-container h1 {
+  margin-bottom: 30px;
+  font-size: 2.5rem; /* larger heading */
+  color: #1f2937;
+}
+
+.payment-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #fff;
+  border-radius: 20px; /* slightly bigger radius */
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  padding: 30px;
+  margin-bottom: 30px;
+  gap: 25px;
+  transition: transform 0.3s ease;
+}
+
+.payment-card:hover {
+  transform: translateY(-5px);
+}
+
+.payment-card img {
+  width: 180px; /* increased image size */
+  border-radius: 12px;
+}
+
+.payment-info {
+  text-align: left;
+}
+
+.payment-info h2 {
+  margin-bottom: 15px;
+  font-size: 1.8rem; /* bigger title */
+}
+
+.payment-info p {
+  margin: 8px 0;
+  font-size: 1.1rem; /* bigger text */
+}
+
+.pay-btn {
+  background-color: #FF6B35;
+  color: #fff;
+  padding: 15px 30px; /* bigger button */
+  font-size: 1.2rem; /* bigger text */
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pay-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.pay-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.success-card h1 {
+  color: #16a34a;
+  margin-bottom: 25px;
+  font-size: 2rem;
+}
+
+.success-card .payment-card {
+  flex-direction: row;
+}

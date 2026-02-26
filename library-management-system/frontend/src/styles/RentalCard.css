@@ -1,0 +1,99 @@
+/* ======================= */
+/* Page Title */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 30px 0;
+  color: #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ======================= */
+/* Rentals List Container */
+.rentals-list {
+  display: flex;
+  flex-direction: column; /* stack cards vertically */
+  align-items: center;    /* center horizontally */
+  gap: 20px;              /* space between cards */
+  padding: 20px;
+}
+
+/* ======================= */
+/* Wrapper around each rental card */
+.rental-card-wrapper {
+  width: 100%;            /* take full width */
+  max-width: 600px;       /* optional max width for better look */
+}
+
+/* ======================= */
+/* Rental Card Styling */
+.rental-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rental-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* ======================= */
+/* Text Styling */
+.rental-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.rental-author,
+.rental-dates,
+.rental-return {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ======================= */
+/* Status Badge */
+.rental-status {
+  font-weight: 600;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  text-align: center;
+  width: fit-content;
+  margin-top: 8px;
+}
+
+/* Status Colors */
+.rental-status.active {
+  background-color: #e0f7fa;
+  color: #00796b;
+}
+
+.rental-status.returned {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.rental-status.late {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+/* ======================= */
+/* Fine Display */
+.rental-fine {
+  color: #c62828;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
