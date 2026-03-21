@@ -20,10 +20,11 @@ def create_app():
     app.url_map.strict_slashes = False
 
     # CORS configuration
+    import os
     CORS(
         app,
         supports_credentials=True,
-        resources={r"/api/*": {"origins": "http://localhost:3000"}},
+        resources={r"/api/*": {"origins": os.environ.get("CORS_ORIGINS", "http://localhost:3000")}},
         allow_headers=["Content-Type", "Authorization"],
     )
 
