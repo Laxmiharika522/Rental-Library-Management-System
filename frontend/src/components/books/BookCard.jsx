@@ -19,6 +19,8 @@ const BookCard = ({ book }) => {
       <img
         src={book.image_url || "https://via.placeholder.com/200x280"}
         alt={book.title}
+        loading="lazy"
+        decoding="async"
       />
 
       {/* ================== BOOK INFO ================== */}

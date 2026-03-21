@@ -1,90 +1,90 @@
-/* Home.css */
-:root {
-    --primary-blue: #D61C4E;
-    --secondary-pink: #f472b6;
-    --text-dark: #1f2937;
-    --section-padding: 80px 10%;
-}
+/* =====================================================
+   HOME PAGE — Magpie Books
+===================================================== */
 
-.home-container { overflow-x: hidden; background-color: #FFF9E6; }
+.home-container {
+  overflow-x: hidden;
+  background: var(--cream);
+}
 
 .home-fade-in {
-    animation: fadeIn 1s ease-in;
+  animation: fadeIn 0.7s ease both;
 }
 
-@keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to {opacity:1; transform:translateY(0);} }
-
-/* Common Section Styling */
+/* =====================================================
+   SECTION WRAPPERS
+===================================================== */
 .section-wrapper {
-    padding: var(--section-padding);
-    text-align: center;
+  padding: 6rem 5%;
+}
+
+.section-wrapper.bg-light {
+  background: var(--cream);
+}
+
+.section-wrapper.bg-alt {
+  background: linear-gradient(135deg, #FFF0CC 0%, #FFE8F0 50%, #FFF0CC 100%);
+  position: relative;
+}
+
+.section-wrapper.bg-alt::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 10% 50%, rgba(255,178,0,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 90% 50%, rgba(214,28,78,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ---------- Section Header ---------- */
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.75rem;
 }
 
 .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: var(--text-dark);
-    position: relative;
-    display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, calc(1.5rem + 1.5vw), 2.8rem);
+  font-weight: 800;
+  color: var(--purple);
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.2rem;
 }
 
 .section-title::after {
-    content: '';
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-pink));
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 2px;
+  content: '';
+  display: block;
+  width: 64px;
+  height: 4px;
+  background: var(--grad-warm);
+  border-radius: var(--r-full);
+  margin: 0.6rem auto 0;
 }
 
-/* Media Grid */
-.media-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-soft);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.75;
 }
 
-/* Book Cards */
-.book-card {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .section-wrapper { padding: 4rem 5%; }
 }
 
-.book-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 16px 35px rgba(79,70,229,0.3);
+@media (max-width: 480px) {
+  .section-wrapper { padding: 3rem 1.2rem; }
 }
-
-.book-card img { width: 100%; border-radius: inherit; }
-
-/* Rental Badge */
-.rental-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: linear-gradient(45deg, var(--secondary-pink), var(--primary-blue));
-    color: white;
-    font-weight: 700;
-    font-size: 0.85rem;
-    padding: 4px 10px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    z-index: 10;
-    pointer-events: none;
-}
-
-.rental-badge.popular { animation: pulseBadge 1.5s infinite; }
-
-@keyframes pulseBadge { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);} }

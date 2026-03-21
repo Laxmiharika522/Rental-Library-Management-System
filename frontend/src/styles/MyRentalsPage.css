@@ -1,31 +1,32 @@
-/* Center the page title */
-h1 {
+/* =====================================================
+   MY RENTALS PAGE — Magpie Books
+===================================================== */
+
+.my-rentals-page {
+  min-height: calc(100vh - 72px);
+  background: var(--cream);
+  padding: 3rem 5%;
   text-align: center;
-  font-size: 2.5rem;
-  margin: 20px 0;
-  color: #333;
+  animation: fadeIn 0.6s ease both;
 }
 
-/* Container for all rentals */
+.my-rentals-page h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, calc(1.4rem + 1.2vw), 2.5rem);
+  font-weight: 800;
+  color: var(--purple);
+  margin-bottom: 2.5rem;
+}
+
+/* Extend RentalCard list styles */
 .rentals-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px; /* space between rental cards */
-  padding: 20px;
+  align-items: center;
 }
 
-/* Wrapper around each rental card */
-.rental-card-wrapper {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  padding: 15px;
-  width: 250px; /* fixed width for each card */
-}
-
-.rental-card-wrapper:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+/* Empty state */
+.my-rentals-page .empty-text {
+  font-size: 1.1rem;
+  color: var(--text-soft);
+  margin-top: 3rem;
+  font-weight: 500;
 }

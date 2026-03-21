@@ -30,13 +30,10 @@ const FeaturedRentals = () => {
   if (books.length === 0) return <p>No featured rentals available.</p>;
 
   return (
-    <div className="container">
-
-      <div className="media-grid">
-        {books.map((book) => ( //BookCard is a reusable component that displays the details of a book in a card format. Here we are mapping through the featured books and rendering a BookCard for each one.
-          <BookCard key={book.id} book={book} />
-        ))}
-      </div>
+    <div className="featured-rentals-grid">
+      {books.map((book) => (
+        <BookCard key={book.id} book={book} />
+      ))}
     </div>
   );
 };

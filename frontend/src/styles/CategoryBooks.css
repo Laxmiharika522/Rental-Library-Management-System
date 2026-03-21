@@ -1,146 +1,112 @@
-/* =================== CATEGORY BOOKS CONTAINER =================== */
+/* =====================================================
+   CATEGORY BOOKS — Magpie Books
+===================================================== */
+
 .category-books-container {
-    padding: 2rem;
-    background-color: #FFF9E6;
-    text-align: center;
-    min-height: 100vh;
+  padding: 3rem 5%;
+  background: var(--cream);
+  min-height: 100vh;
+  text-align: center;
 }
 
-/* ----------------- Category Title ----------------- */
+/* ---------- Category Header ---------- */
+.category-header {
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.6s ease both;
+}
+
 .category-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: #6A1E55;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, calc(1.4rem + 1.5vw), 2.8rem);
+  font-weight: 800;
+  color: var(--purple);
+  margin-bottom: 0.5rem;
 }
 
-/* =================== SEARCH BAR =================== */
-.search-bar {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto 2rem auto;
+.category-count {
+  color: var(--text-soft);
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-.search-bar input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border-radius: 12px;
-    border: 2px solid #FFD4A8;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.3s;
-}
-
-.search-bar input:focus {
-    border-color: #FF6B35;
-    box-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
-}
-
-/* =================== BOOKS GRID =================== */
+/* ---------- Books Grid ---------- */
 .books-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-    justify-content: center;
-    max-width: 1400px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem;
+  max-width: 1500px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease 0.15s both;
 }
 
-/* =================== PAGINATION =================== */
+/* ---------- Empty State ---------- */
+.empty-text {
+  font-size: 1.1rem;
+  color: var(--text-soft);
+  margin-top: 4rem;
+  font-weight: 500;
+}
+
+/* ---------- Pagination ---------- */
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 2.5rem;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
 }
 
 .pagination button {
-    min-width: 40px;
-    height: 40px;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    border: none;
-    background: #FFE4D1;
-    color: #6A1E55;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: var(--r-md);
+  border: 2px solid var(--border);
+  background: white;
+  color: var(--purple);
+  font-weight: 700;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .pagination button:hover:enabled {
-    background: linear-gradient(135deg, #FF6B35, #FFB200);
-    color: white;
+  background: var(--grad-warm);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 107, 53, 0.35);
 }
 
 .pagination button:disabled {
-    background: #d1d5db;
-    cursor: not-allowed;
-    opacity: 0.5;
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .pagination span {
-    font-weight: 600;
-    color: #6A1E55;
+  font-weight: 600;
+  color: var(--purple);
+  padding: 0 8px;
+  font-size: 0.95rem;
 }
 
-/* =================== RESPONSIVE GRID =================== */
-@media (max-width: 1400px) {
-    .books-grid {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 1.8rem;
-    }
-}
-
+/* ---------- Responsive ---------- */
 @media (max-width: 1200px) {
-    .category-books-container {
-        padding: 1.5rem;
-    }
-    .books-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 1.6rem;
-    }
-}
-
-@media (max-width: 1024px) {
-    .books-grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 1.5rem;
-    }
+  .books-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
 }
 
 @media (max-width: 768px) {
-    .books-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1.3rem;
-    }
-    .category-title {
-        font-size: 1.75rem;
-    }
+  .books-grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.4rem; }
+  .category-books-container { padding: 2rem 4%; }
 }
 
 @media (max-width: 640px) {
-    .books-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.2rem;
-    }
-    .category-books-container {
-        padding: 1rem;
-    }
+  .books-grid { grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
 }
 
-@media (max-width: 480px) {
-    .books-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        max-width: 400px;
-    }
-    .category-title {
-        font-size: 1.5rem;
-    }
-    .search-bar input {
-        font-size: 0.95rem;
-        padding: 0.65rem 0.9rem;
-    }
+@media (max-width: 400px) {
+  .books-grid { grid-template-columns: 1fr; }
 }

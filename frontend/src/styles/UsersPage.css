@@ -1,142 +1,188 @@
-/* UsersPage.css */
+/* =====================================================
+   USERS PAGE — Magpie Books (Admin)
+===================================================== */
+
 .users-container {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 1100px;
+  margin: 2.5rem auto;
+  padding: 0 5% 4rem;
+  animation: fadeIn 0.5s ease both;
 }
 
-/* Header & Toggle Button Layout */
+/* ---------- Header ---------- */
 .users-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .users-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, calc(1.2rem + 1vw), 2rem);
+  font-weight: 700;
+  color: var(--purple);
   margin: 0;
-  color: #333;
-  font-size: 28px;
-  font-weight: 600;
 }
 
 .add-toggle-btn {
-  background-color: #4a90e2;
+  background: var(--grad-warm);
   color: white;
-  padding: 10px 18px;
+  padding: 0.75rem 1.4rem;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--r-full);
+  font-weight: 700;
+  font-size: 0.92rem;
+  font-family: var(--font-body);
   cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(255,107,53,0.3);
 }
 
 .add-toggle-btn:hover {
-  background-color: #357abd;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(255,107,53,0.45);
 }
 
-/* Add User Card & Form */
+/* ---------- Add User Card ---------- */
 .add-user-card {
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 30px;
-  border: 1px solid #e0e0e0;
-  animation: slideDown 0.3s ease-out;
+  padding: 1.8rem 2rem;
+  border-radius: var(--r-lg);
+  margin-bottom: 2rem;
+  border: 1.5px solid #FFE4A3;
+  box-shadow: var(--shadow-sm);
+  animation: fadeInUp 0.4s ease both;
 }
 
 .add-user-card h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: #444;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--purple);
+  margin: 0 0 1.2rem;
 }
 
 .add-user-form {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
+  gap: 1rem;
+  align-items: end;
 }
 
-.add-user-form input, 
+.add-user-form input,
 .add-user-form select {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 0.8rem 1rem;
+  border: 2px solid #F0E0F8;
+  border-radius: var(--r-md);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  outline: none;
+  background: #FAFAFA;
+  transition: all 0.25s ease;
+}
+
+.add-user-form input:focus,
+.add-user-form select:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255,107,53,0.12);
+  background: white;
 }
 
 .save-btn {
-  background-color: #27ae60 !important; /* Forces green for save button */
-  grid-column: span 1;
+  background: var(--grad-warm) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--r-md) !important;
+  font-weight: 700 !important;
+  font-family: var(--font-body) !important;
+  padding: 0.8rem 1.2rem !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 14px rgba(255,107,53,0.3) !important;
+  transition: all 0.25s ease !important;
 }
 
-/* Table Styles */
+.save-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 22px rgba(255,107,53,0.45) !important;
+}
+
+/* ---------- Table ---------- */
 .users-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
-  border-radius: 8px;
+  background: white;
+  border-radius: var(--r-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1.5px solid #FFE4A3;
 }
 
 .users-table th,
 .users-table td {
-  padding: 12px 15px;
+  padding: 14px 16px;
   text-align: left;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #FFF0CC;
+  font-size: 0.92rem;
 }
 
 .users-table th {
-  background-color: #4a90e2;
+  background: var(--grad-royal);
   color: white;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  font-size: 13px;
+  letter-spacing: 1px;
 }
 
-.users-table tr:hover {
-  background-color: #eef6ff;
-  transition: 0.3s ease;
+.users-table tr:hover td {
+  background: #FFF9E6;
 }
 
-/* Role Badges */
+/* ---------- Role Badges ---------- */
 .role-badge {
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .role-badge.admin {
-  background-color: #f1c40f;
-  color: #000;
+  background: rgba(255,178,0,0.15);
+  color: #B45309;
 }
 
 .role-badge.user {
-  background-color: #d1d8e0;
-  color: #4b6584;
+  background: rgba(106,30,85,0.1);
+  color: var(--purple);
 }
 
-/* Action Buttons */
+/* ---------- Action Buttons ---------- */
 .users-table button {
-  padding: 8px 12px;
+  padding: 6px 12px;
   margin-right: 5px;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--r-md);
   cursor: pointer;
-  font-weight: 600;
-  color: white;
+  font-weight: 700;
+  font-size: 0.82rem;
+  font-family: var(--font-body);
+  transition: all 0.2s ease;
 }
 
-.promote-btn { background-color: #2ecc71; }
-.demote-btn { background-color: #f39c12; }
-.delete-btn { background-color: #e74c3c; }
+.promote-btn  { background: rgba(16,185,129,0.12); color: #059669; }
+.demote-btn   { background: rgba(245,158,11,0.12); color: #D97706; }
+.delete-btn   { background: rgba(214,28,78,0.1);  color: var(--crimson); }
 
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+.promote-btn:hover { background: #059669; color: white; transform: translateY(-1px); }
+.demote-btn:hover  { background: #D97706; color: white; transform: translateY(-1px); }
+.delete-btn:hover  { background: var(--crimson); color: white; transform: translateY(-1px); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .users-header { flex-direction: column; align-items: flex-start; }
+  .users-container { padding: 0 4% 3rem; margin-top: 1.5rem; }
 }

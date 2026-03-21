@@ -40,14 +40,13 @@ const About = () => {
           <li>Admin dashboard for librarians</li>
           <li>Rental history tracking</li>
           <li>Author & category management</li>
-          <li>Fine and due date system</li>
         </ul>
       </div>
 
       <div className="about-card">
         <h3 className="title">Technology</h3>
         <p>
-          Built using React JS, Node.js, Express, MongoDB and REST API to
+          Built using React JS, Flask, MYSQL Database and REST API to
           ensure performance, security, and scalability.
         </p>
       </div>

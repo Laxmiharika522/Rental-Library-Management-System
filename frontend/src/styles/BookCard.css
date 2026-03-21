@@ -1,161 +1,149 @@
-/* =================== BOOK CARD =================== */
+/* =====================================================
+   BOOK CARD — Magpie Books
+===================================================== */
+
 .book-card {
-    background: #ffffff;
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(214, 28, 78, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #FFB200;
-    height: 100%;
-    min-height: 480px;
+  background: var(--white);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1),
+              box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid #FFE4A3;
+  position: relative;
+  animation: fadeInUp 0.5s ease both;
 }
 
-/* Hover effect for card */
 .book-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 35px rgba(255, 107, 53, 0.3);
-    border-color: #FF6B35;
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 24px 56px rgba(106, 30, 85, 0.18);
+  border-color: var(--gold);
+}
+
+/* ---------- Rental Badge ---------- */
+.rental-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--grad-fire);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: var(--r-full);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(214,28,78,0.4);
+  z-index: 10;
+  animation: pulse 2s ease infinite;
 }
 
 /* ---------- Book Cover ---------- */
 .book-card img {
-    width: 100%;
-    height: 280px;
-    object-fit: contain;
-    background-color: #FFF9E6;
-    display: block;
-    border-top-left-radius: 18px;
-    border-top-right-radius: 18px;
-    border-bottom: 2px solid #FFE4A3;
-    flex-shrink: 0;
+  width: 100%;
+  height: 290px;
+  object-fit: contain;
+  background: linear-gradient(135deg, #FFF9E6, #FFF0CC);
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.book-card:hover img {
+  transform: scale(1.04);
 }
 
 /* ---------- Book Info ---------- */
 .book-info {
-    padding: 1.5rem;
-    text-align: left;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 180px;
+  padding: 1.4rem 1.5rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+  background: white;
 }
 
 .book-info h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: #6A1E55;
-    line-height: 1.3;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--purple);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .book-info p {
-    font-size: 0.95rem;
-    margin-bottom: 0.5rem;
-    color: #4A1640;
-    line-height: 1.4;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  font-weight: 500;
 }
 
 .book-info p:last-of-type {
-    font-weight: 600;
-    color: #D61C4E;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+/* Availability status color */
+.book-card:has(button:not(:disabled)) .book-info p:last-of-type {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+.book-card:has(button:disabled) .book-info p:last-of-type {
+  background: rgba(214, 28, 78, 0.08);
+  color: var(--crimson);
 }
 
 /* ---------- Rent Button ---------- */
 .book-info button {
-    width: 100%;
-    background: linear-gradient(135deg, #FF6B35, #FFB200);
-    color: white;
-    border: 2px solid #D61C4E;
-    padding: 1rem;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s, border-color 0.2s;
-    font-size: 1.05rem;
-    margin-top: auto;
+  width: 100%;
+  background: var(--grad-warm);
+  color: white;
+  border: none;
+  padding: 11px 1rem;
+  border-radius: var(--r-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: auto;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.3);
 }
 
 .book-info button:hover:enabled {
-    background: linear-gradient(135deg, #D61C4E, #6A1E55);
-    transform: scale(1.03);
-    border-color: #6A1E55;
+  background: var(--grad-royal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(106, 30, 85, 0.35);
 }
 
 .book-info button:disabled {
-    background: #FFE4D1;
-    cursor: not-allowed;
-    color: #FF6B35;
-    border-color: #FFC4A8;
+  background: #F3E8FF;
+  color: #C4A0D4;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
-/* =================== RESPONSIVE =================== */
-@media (max-width: 1200px) {
-    .book-card {
-        min-height: 460px;
-    }
-    .book-card img {
-        height: 260px;
-    }
-}
-
+/* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
-    .book-card {
-        min-height: 440px;
-    }
-    .book-card img {
-        height: 240px;
-    }
-    .book-info {
-        min-height: 170px;
-    }
+  .book-card img { height: 250px; }
 }
 
 @media (max-width: 768px) {
-    .book-card {
-        min-height: 400px;
-    }
-    .book-card img {
-        height: 220px;
-    }
-    .book-info h3 {
-        font-size: 1.15rem;
-    }
-    .book-info p {
-        font-size: 0.9rem;
-    }
-    .book-info {
-        min-height: 160px;
-        padding: 1.2rem;
-    }
+  .book-card img { height: 220px; }
+  .book-info h3  { font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
-    .book-card {
-        min-height: 380px;
-    }
-    .book-card img {
-        height: 200px;
-    }
-    .book-info h3 {
-        font-size: 1.05rem;
-    }
-    .book-info p {
-        font-size: 0.85rem;
-    }
-    .book-info button {
-        font-size: 0.95rem;
-        padding: 0.85rem;
-    }
-    .book-info {
-        min-height: 150px;
-        padding: 1rem;
-    }
+  .book-card img { height: 200px; }
+  .book-info { padding: 1.1rem 1.2rem 1.3rem; }
 }

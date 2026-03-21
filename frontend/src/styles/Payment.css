@@ -1,83 +1,129 @@
-.payment-container {
-  max-width: 700px; /* increased max width */
-  margin: 50px auto;
-  padding: 40px;
+/* =====================================================
+   PAYMENT PAGE — Magpie Books
+===================================================== */
+
+.payment-page-wrapper {
+  min-height: calc(100vh - 72px);
+  background: var(--cream);
+  padding: 3rem 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.6s ease both;
+}
+
+.payment-page-wrapper h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, calc(1.4rem + 1.2vw), 2.5rem);
+  font-weight: 800;
+  color: var(--purple);
+  margin-bottom: 2rem;
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-  background: #f0f4f8; /* subtle background */
-  border-radius: 12px;
 }
 
-.payment-container h1 {
-  margin-bottom: 30px;
-  font-size: 2.5rem; /* larger heading */
-  color: #1f2937;
-}
-
+/* ---------- Payment Card ---------- */
 .payment-card {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: #fff;
-  border-radius: 20px; /* slightly bigger radius */
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-  padding: 30px;
-  margin-bottom: 30px;
-  gap: 25px;
+  background: white;
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
+  padding: 2rem 2.2rem;
+  margin-bottom: 1.8rem;
+  gap: 2rem;
   transition: transform 0.3s ease;
+  border: 1.5px solid #FFE4A3;
+  width: 100%;
+  max-width: 680px;
 }
 
 .payment-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold);
 }
 
 .payment-card img {
-  width: 180px; /* increased image size */
-  border-radius: 12px;
+  width: 160px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: var(--r-md);
+  background: var(--cream);
+  flex-shrink: 0;
 }
 
+/* ---------- Payment Info ---------- */
 .payment-info {
   text-align: left;
+  flex: 1;
 }
 
 .payment-info h2 {
-  margin-bottom: 15px;
-  font-size: 1.8rem; /* bigger title */
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--purple);
+  margin-bottom: 0.8rem;
 }
 
 .payment-info p {
-  margin: 8px 0;
-  font-size: 1.1rem; /* bigger text */
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  margin: 0.4rem 0;
 }
 
+.payment-info p strong {
+  color: var(--text-dark);
+}
+
+/* ---------- Pay Button ---------- */
 .pay-btn {
-  background-color: #FF6B35;
-  color: #fff;
-  padding: 15px 30px; /* bigger button */
-  font-size: 1.2rem; /* bigger text */
-  font-weight: 600;
+  background: var(--grad-warm);
+  color: white;
+  padding: 1rem 2.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: var(--font-body);
   border: none;
-  border-radius: 12px;
+  border-radius: var(--r-full);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(255,107,53,0.35);
+  margin-top: 1.2rem;
 }
 
-.pay-btn:hover {
-  background-color: #1d4ed8;
+.pay-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(255,107,53,0.5);
 }
 
 .pay-btn:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
+  transform: none;
 }
 
+/* ---------- Success State ---------- */
 .success-card h1 {
-  color: #16a34a;
-  margin-bottom: 25px;
-  font-size: 2rem;
+  color: #059669;
 }
 
-.success-card .payment-card {
-  flex-direction: row;
+/* ---------- Container fallback (for old usage) ---------- */
+.payment-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+  text-align: center;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .payment-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .payment-info { text-align: center; }
+  .payment-card img { width: 130px; height: 165px; }
 }

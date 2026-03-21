@@ -1,61 +1,110 @@
-//frontend\src\components\common\Navbar.js
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+// frontend/src/components/common/Navbar.jsx
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { logout } from "../../services/authService";
 import "../../styles/Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const user = JSON.parse(localStorage.getItem("user"));
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close menu on route change
+  useEffect(() => { setMenuOpen(false); }, [location]);
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
 
-  // --- 1. ADMIN NAVBAR (Management Focus) ---
+  const isActive = (path) => location.pathname === path ? "nav-link active" : "nav-link";
+
+  // --- ADMIN NAVBAR ---
   if (user?.role === "admin") {
     return (
-      <nav className="navbar admin-nav">
+      <nav className={`navbar admin-nav${scrolled ? " scrolled" : ""}`}>
         <div className="navbar-left">
-          <Link to="/admin/dashboard" className="logo">🛡️ Admin Panel</Link>
+          <Link to="/admin/dashboard" className="logo">
+            <span className="logo-icon">🛡️</span>
+            <span className="logo-text">Admin Panel</span>
+          </Link>
         </div>
-        <div className="navbar-right">
-          <Link to="/admin/dashboard">Dashboard</Link>
-          <Link to="/admin/users">Manage Users</Link>
-          <Link to="/catalog">View Books</Link>
-          <div className="nav-divider"></div>
-          <span className="admin-status">Logged in as: <strong>{user.username}</strong></span>
-          <button onClick={handleLogout} className="btn-logout admin-btn">Logout</button>
+
+        {/* Hamburger */}
+        <button
+          className={`hamburger${menuOpen ? " open" : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span /><span /><span />
+        </button>
+
+        <div className={`navbar-right${menuOpen ? " open" : ""}`}>
+          <Link to="/admin/dashboard" className={isActive("/admin/dashboard")}>Dashboard</Link>
+          <Link to="/admin/users" className={isActive("/admin/users")}>Manage Users</Link>
+          <Link to="/catalog" className={isActive("/catalog")}>View Books</Link>
+          <div className="nav-divider" />
+          <span className="admin-badge">
+            <span className="admin-dot" />
+            {user.username}
+          </span>
+          <button onClick={handleLogout} className="btn-logout">Logout</button>
         </div>
       </nav>
     );
   }
 
-  // --- 2. USER NAVBAR (Member Focus) ---
+  // --- USER NAVBAR ---
   return (
-    <nav className="navbar user-nav">
+    <nav className={`navbar user-nav${scrolled ? " scrolled" : ""}`}>
       <div className="navbar-left">
-        <Link to="/home" className="logo">📚 Magpie Books</Link>
+        <Link to="/home" className="logo">
+          <span className="logo-icon">📚</span>
+          <span className="logo-text">Magpie Books</span>
+        </Link>
       </div>
-      <div className="navbar-right">
-        <Link to="/home">Home</Link>
-        <Link to="/catalog">Catalog</Link>
-        <Link to="/about">About</Link>
-        
+
+      {/* Hamburger */}
+      <button
+        className={`hamburger${menuOpen ? " open" : ""}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+      >
+        <span /><span /><span />
+      </button>
+
+      <div className={`navbar-right${menuOpen ? " open" : ""}`}>
+        <Link to="/home"    className={isActive("/home")}>Home</Link>
+        <Link to="/catalog" className={isActive("/catalog")}>Catalog</Link>
+        <Link to="/about"   className={isActive("/about")}>About</Link>
+
         {user ? (
           <>
-            <Link to="/my-rentals" className="btn-my-rentals">My Rentals</Link>
-            <Link to="/profile" className="user-profile">Hi, {user.username}</Link>
+            <Link to="/my-rentals" className="btn-nav-pill">My Rentals</Link>
+            <Link to="/profile" className="user-avatar-link">
+              <span className="avatar-circle">{user.username[0].toUpperCase()}</span>
+              <span className="avatar-name">{user.username}</span>
+            </Link>
             <button onClick={handleLogout} className="btn-logout">Logout</button>
           </>
         ) : (
           <div className="guest-links">
-            <Link to="/login" className="btn-login">Login</Link>
-            <Link to="/register" className="btn-register">Sign Up</Link>
+            <Link to="/login"    className="btn-nav-ghost">Login</Link>
+            <Link to="/register" className="btn-nav-pill">Sign Up</Link>
           </div>
         )}
       </div>
+
+      {/* Mobile overlay */}
+      {menuOpen && <div className="nav-overlay" onClick={() => setMenuOpen(false)} />}
     </nav>
   );
 };

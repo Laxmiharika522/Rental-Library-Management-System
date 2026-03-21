@@ -1,126 +1,335 @@
-/* Navbar.css */
+/* =====================================================
+   NAVBAR — Magpie Books
+===================================================== */
 
-/* --- General Navbar Styles --- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 36px;
-  font-family: "Segoe UI", Arial, sans-serif;
-  box-shadow: 0 4px 10px rgba(214, 28, 78, 0.2);
+  padding: 0 2.5rem;
+  height: 4.5rem; /* Scalable height for zoom proportionality */
   position: sticky;
   top: 0;
   z-index: 1000;
-  color: white;
-  min-height: 80px;
-  overflow: hidden;  
+  transition: all 0.4s ease;
+  backdrop-filter: blur(0px);
 }
 
-/* Left side (logo) */
-.navbar-left .logo {
-  font-size: 2rem;
-  font-weight: 700;
+.navbar.scrolled {
+  height: 3.8rem; /* Scalable scrolled height */
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 32px rgba(106, 30, 85, 0.25);
+}
+
+/* ---------- User Nav ---------- */
+.user-nav {
+  background: linear-gradient(135deg, #FF6B35 0%, #FFB200 60%, #FF6B35 100%);
+  background-size: 200% auto;
+  animation: gradientShift 6s ease infinite alternate;
+}
+
+@keyframes gradientShift {
+  from { background-position: 0% center; }
+  to   { background-position: 100% center; }
+}
+
+/* ---------- Admin Nav ---------- */
+.admin-nav {
+  background: linear-gradient(135deg, #4A1640, #6A1E55, #D61C4E);
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
-  color: inherit; 
+  color: white;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-icon {
+  transform: rotate(-10deg) scale(1.15);
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ---------- Right Links ---------- */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- Nav Links ---------- */
+.nav-link {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: var(--r-full);
+  transition: all 0.25s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 20px;
+  height: 2px;
+  background: white;
+  border-radius: var(--r-full);
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover {
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+.nav-link.active {
+  background: rgba(255,255,255,0.25);
+  color: white;
+  font-weight: 700;
+}
+
+.nav-link.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ---------- Buttons ---------- */
+.btn-nav-ghost {
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: var(--r-full);
+  border: 2px solid rgba(255,255,255,0.5);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-nav-ghost:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: white;
+}
+
+.btn-nav-pill {
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 9px 20px;
+  border-radius: var(--r-full);
+  background: rgba(255,255,255,0.25);
+  border: 2px solid rgba(255,255,255,0.4);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+}
+
+.btn-nav-pill:hover {
+  background: rgba(255,255,255,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.btn-logout {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: var(--r-full);
+  border: none;
+  background: rgba(255,255,255,0.15);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-logout:hover {
+  background: rgba(214, 28, 78, 0.7);
+  transform: translateY(-1px);
+}
+
+/* ---------- User Avatar ---------- */
+.user-avatar-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 4px;
+  border-radius: var(--r-full);
+  background: rgba(255,255,255,0.15);
+  transition: all 0.25s ease;
+  color: white;
+}
+
+.user-avatar-link:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+.avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--grad-royal);
+  border: 2px solid rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.avatar-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+}
+
+/* ---------- Admin Badge ---------- */
+.admin-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--r-full);
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.admin-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ADE80;
+  box-shadow: 0 0 8px #4ADE80;
+  animation: pulse 2s ease infinite;
+}
+
+/* ---------- Divider ---------- */
+.nav-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(255,255,255,0.3);
+  margin: 0 8px;
+}
+
+/* ---------- Guest Links ---------- */
+.guest-links {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-
-/* Right side (links) */
-.navbar-right {
-  display: flex;
+/* ---------- Hamburger ---------- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 20px;
-}
-
-/* --- Links Style --- */
-.navbar-right a {
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 8px 14px;
-  border-radius: 6px;
-  transition: all 0.2s ease-in-out;
-}
-
-.navbar-right a:hover {
-  background-color: rgba(255, 255, 255, 0.25);
-}
-
-/* Divider for admin navbar */
-.nav-divider {
-  width: 1px;
-  height: 28px;
-  background-color: rgba(255, 255, 255, 0.6);
-  margin: 0 14px;
-}
-
-
-/* --- Buttons --- */
-.btn-logout,
-.btn-login,
-.btn-register,
-.btn-my-rentals {
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--r-md);
   border: none;
-  background-color: rgba(255, 255, 255, 0.25);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 1rem;
+  background: rgba(255,255,255,0.15);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background 0.25s ease;
+  z-index: 1100;
+  position: relative;
 }
 
-.btn-logout:hover,
-.btn-login:hover,
-.btn-register:hover,
-.btn-my-rentals:hover {
-  background-color: rgba(255, 255, 255, 0.45);
+.hamburger:hover { background: rgba(255,255,255,0.3); }
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: var(--r-full);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
 }
 
-/* --- Admin Navbar --- */
-.admin-nav {
-  background: linear-gradient(135deg, #6A1E55, #D61C4E); /* deep purple to hot pink */
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- Mobile Overlay ---------- */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 990;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.3s ease;
 }
 
-/* --- User Navbar --- */
-.user-nav {
-  background: linear-gradient(135deg, #FF6B35, #FFB200); /* orange to gold */
-}
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
 
-/* Admin status text */
-.admin-status {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-/* Guest links spacing */
-.guest-links {
-  display: flex;
-  gap: 12px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
   .navbar-right {
-    gap: 12px;
-    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    height: 100vh;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 90px 1.5rem 2rem;
+    background: linear-gradient(160deg, #6A1E55, #D61C4E 60%, #FF6B35);
+    gap: 6px;
+    z-index: 1000;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -8px 0 40px rgba(0,0,0,0.3);
   }
 
-  .navbar-left .logo {
-    font-size: 1.6rem;
+  .user-nav .navbar-right {
+    background: linear-gradient(160deg, #FF6B35, #FFB200 50%, #D61C4E);
   }
 
-  .navbar-right a,
+  .navbar-right.open { right: 0; }
+
+  .nav-link,
+  .btn-nav-ghost,
+  .btn-nav-pill,
   .btn-logout,
-  .btn-login,
-  .btn-register,
-  .btn-my-rentals {
-    font-size: 0.95rem;
-    padding: 6px 10px;
+  .user-avatar-link {
+    width: 100%;
+    border-radius: var(--r-md);
+    font-size: 1rem;
+    padding: 12px 18px;
   }
+
+  .nav-divider { width: 100%; height: 1px; margin: 6px 0; }
+  .admin-badge { width: 100%; }
+  .guest-links { flex-direction: column; width: 100%; gap: 8px; }
+}
+
+@media (max-width: 480px) {
+  .navbar { padding: 0 1.2rem; }
+  .logo-text { font-size: 1.25rem; }
 }

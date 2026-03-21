@@ -1,83 +1,135 @@
+/* =====================================================
+   CONFIRM RENTAL — Magpie Books
+===================================================== */
+
+.confirm-rental-page {
+  min-height: calc(100vh - 72px);
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
 .confirm-rental {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  max-width: 520px;
+  width: 100%;
+  background: white;
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1.5px solid #FFE4A3;
+  padding: 2.8rem 2.5rem;
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
+  animation: fadeInUp 0.6s ease both;
 }
 
 .confirm-rental h2 {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #1f2937;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--purple);
+  margin-bottom: 1.5rem;
 }
 
 .confirm-rental img {
-  border-radius: 10px;
-  margin-bottom: 20px;
+  border-radius: var(--r-md);
+  margin-bottom: 1.4rem;
+  max-height: 220px;
+  object-fit: contain;
+  background: var(--cream);
   transition: transform 0.3s ease;
+  width: 100%;
 }
 
 .confirm-rental img:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .confirm-rental h3 {
-  margin: 10px 0;
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--purple);
+  margin: 0.8rem 0 0.4rem;
 }
 
 .confirm-rental p {
-  margin: 5px 0;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  margin: 0.3rem 0;
 }
 
 .confirm-rental label {
   display: block;
-  margin: 15px 0;
-  font-weight: 500;
-  font-size: 1rem;
+  margin: 1.2rem 0 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--purple);
+  text-align: left;
 }
 
 .confirm-rental input[type="number"] {
-  width: 70px;
-  padding: 5px 10px;
-  margin-left: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  width: 90px;
+  padding: 8px 12px;
+  border: 2px solid #F0E0F8;
+  border-radius: var(--r-md);
   font-size: 1rem;
+  font-family: var(--font-body);
+  outline: none;
+  transition: all 0.25s ease;
+  margin-left: 10px;
+}
+
+.confirm-rental input[type="number"]:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255,107,53,0.15);
+}
+
+/* ---------- Action Buttons ---------- */
+.confirm-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .confirm-rental button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 0.85rem 1.8rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  font-family: var(--font-body);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--r-full);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
-.confirm-rental button:first-child {
-  background-color: #f3f4f6;
-  color: #333;
+.confirm-rental button:first-of-type,
+.btn-cancel {
+  background: #F3E8FF;
+  color: var(--purple);
 }
 
-.confirm-rental button:first-child:hover {
-  background-color: #e5e7eb;
+.confirm-rental button:first-of-type:hover,
+.btn-cancel:hover {
+  background: #FFE4D1;
 }
 
-.confirm-rental button:last-child {
-  background-color: #FF6B35;
-  color: #fff;
-  margin-left: 10px;
+.confirm-rental button:last-of-type,
+.btn-confirm {
+  background: var(--grad-warm);
+  color: white;
+  box-shadow: 0 6px 18px rgba(255,107,53,0.35);
 }
 
-.confirm-rental button:last-child:hover {
-  background-color: #1d4ed8;
+.confirm-rental button:last-of-type:hover,
+.btn-confirm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(255,107,53,0.5);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .confirm-rental { padding: 2rem 1.4rem; }
+  .confirm-rental h2 { font-size: 1.5rem; }
 }
