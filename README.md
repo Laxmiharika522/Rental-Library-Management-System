@@ -9,6 +9,34 @@ A comprehensive library management web application designed for renting and mana
 - **Admin Dashboard**: Manage the book catalog, user accounts, and rental history.
 - **Dynamic Recommendations**: Personalized book suggestions based on rental history.
 
+## Screenshots
+
+### Home & Exploration
+| Home Page | Catalog Page | Browse by Category |
+| :---: | :---: | :---: |
+| ![Home Page](Home_page.png) | ![Catalog Page](Catalog.png) | ![Browse by Category](Browse_by_category.png) |
+
+### Book Details & Renting
+| Book Renting | Payment | Confirm Payment |
+| :---: | :---: | :---: |
+| ![Book Renting](Book_Renting.png) | ![Payment](Payment.png) | ![Confirm Payment](Confirm_payment.png) |
+
+### User Profile & My Rentals
+| My Rentals | Profile Update | Check-in Rentals |
+| :---: | :---: | :---: |
+| ![My Rentals](My_Rentals.png) | ![Profile Update](Profile_Update.png) | ![Check-in MyRentals](Check_in_MyRentals.png) |
+
+### Admin Dashboard
+| Admin Dashboard | Books Management | User Management |
+| :---: | :---: | :---: |
+| ![Admin Dashboard](Admin_Dashboard.png) | ![Admin Books Management](Admin_BooksManagement.png) | ![Admin User Management](Admin_UserManagement.png) |
+
+### Trending & More
+| Trending Books | Featured Authors | About Page |
+| :---: | :---: | :---: |
+| ![Trending Books](Trending_books.png) | ![Featured Authors](Featured_Authors.png) | ![About Page](About.png) |
+
+
 ## Technology Stack
 - **Frontend**: React.js, Vanilla CSS, Lucide-React icons.
 - **Backend**: Python (Flask), SQLite/JSON.
