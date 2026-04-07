@@ -9,6 +9,8 @@ from routes.books import books_bp
 from routes.rentals import rentals_bp
 from routes.users import users_bp
 from routes.admin import admin_bp
+from routes.wishlist import wishlist_bp
+from routes.reviews import reviews_bp
 
 
 
@@ -40,6 +42,8 @@ def create_app():
     app.register_blueprint(rentals_bp, url_prefix="/api/rentals")
     app.register_blueprint(users_bp, url_prefix="/api/users")
     app.register_blueprint(admin_bp, url_prefix="/api/admin")
+    app.register_blueprint(wishlist_bp, url_prefix="/api/wishlist")
+    app.register_blueprint(reviews_bp, url_prefix="/api/reviews")
 
 
     # ----------------------------

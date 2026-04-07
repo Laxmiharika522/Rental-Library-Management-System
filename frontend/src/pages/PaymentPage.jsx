@@ -8,32 +8,32 @@ const PaymentPage = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  // ✅ Hooks FIRST (no conditions before these)
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [activeMethod, setActiveMethod] = useState("card");
 
-  // ✅ Safe data extraction AFTER hooks
   const book = state?.book;
-  const duration = state?.duration;
+  const duration = state?.duration || 14;
+  const totalPrice = state?.total || (book?.price_per_day * duration);
 
-  if (!book || !duration) {
+  if (!book) {
     return (
-      <div className="payment-container">
-        <h2>No payment details found</h2>
-        <button onClick={() => navigate("/catalog")} className="pay-btn">
-          Back to Catalog
-        </button>
+      <div className="payment-page-wrapper">
+        <div className="payment-content-box" style={{textAlign: "center", alignItems: "center"}}>
+          <div className="secure-badge">⚠️ Error</div>
+          <h1>No details found</h1>
+          <button onClick={() => navigate("/catalog")} className="pay-btn-checkout">
+            Back to Catalog
+          </button>
+        </div>
       </div>
     );
   }
 
-  const pricePerDay = book.price_per_day || 0;
-  const totalPrice = pricePerDay * duration;
-
   const confirmPayment = async () => {
     setLoading(true);
     try {
-      await rentBook(book.id);
+      await rentBook(book.id, duration);
       setSuccess(true);
     } catch (err) {
       alert(err.response?.data?.error || "Rental failed");
@@ -42,59 +42,111 @@ const PaymentPage = () => {
     }
   };
 
+  if (success) {
+    return (
+      <div className="payment-page-wrapper">
+        <div className="payment-content-box payment-success-container" style={{textAlign: "center", alignItems: "center"}}>
+          <div className="success-icon-big">✅</div>
+          <h1>Rental Successful!</h1>
+          <p className="subtitle">Your book "{book.title}" is now ready in your dashboard.</p>
+          <div style={{maxWidth: "300px", width: "100%"}}>
+            <button className="pay-btn-checkout" onClick={() => navigate("/my-rentals")}>
+              Go to My Rentals
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="payment-container">
-      {!success ? (
-        <>
-          <h1>💳 Payment Confirmation</h1>
+    <div className="payment-page-wrapper">
+      <div className="payment-content-box">
+        <div className="secure-badge">🔒 SECURE CHECKOUT</div>
+        <h1>Complete Your Rental</h1>
+        <p className="subtitle">Secure transaction powered by Magpie Library</p>
 
-          <div className="payment-card">
-            <img
-              src={book.image_url || "https://via.placeholder.com/160x240"}
-              alt={book.title}
-            />
-
-            <div className="payment-info">
-              <h2>{book.title}</h2>
-              <p><strong>Author:</strong> {book.author}</p>
-              <p><strong>Category:</strong> {book.category}</p>
-              <p><strong>Genre:</strong> {book.genre}</p>
-
-              <hr />
-
-              <p><strong>Price per day:</strong> ₹{pricePerDay}</p>
-              <p><strong>Duration:</strong> {duration} days</p>
-              <p className="total-amount">
-                <strong>Total Amount:</strong> ₹{totalPrice}
-              </p>
-
-              <small className="policy-note">
-                🔄 Auto-return after {duration} days 
-              </small>
+        <div className="checkout-main">
+          
+          {/* LEFT COLUMN */}
+          <div className="checkout-options">
+            
+            {/* Booking Message */}
+            <div className="confirmation-notice">
+               <div className="info-icon">💡</div>
+               <div>
+                  <h3>Ready to Rent</h3>
+                  <p>No immediate payment is required. You can confirm your rental now and manage your books from the history page.</p>
+               </div>
             </div>
+
+            {/* Rental Terms */}
+            <div className="terms-card">
+              <h3>Rental Terms & Conditions</h3>
+              <div className="terms-list">
+                <div className="term-item">
+                  <span className="check">✓</span>
+                  <span>Rental duration is strictly <strong>{duration} days</strong>.</span>
+                </div>
+                <div className="term-item">
+                  <span className="check">✓</span>
+                  <span>A fine of <strong>₹{book?.fine_rate || "10.00"} per day</strong> will be applied automatically if returned late.</span>
+                </div>
+                <div className="term-item">
+                  <span className="check">✓</span>
+                  <span>By clicking "Confirm Rental", you agree to our library policies.</span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <button
-            className="pay-btn"
-            disabled={loading}
-            onClick={confirmPayment}
-          >
-            {loading ? "Processing..." : "Confirm Payment"}
-          </button>
-        </>
-      ) : (
-        <div className="success-card">
-          <h1>✅ Rental Successful</h1>
-          <p>Your book has been rented successfully.</p>
+          {/* RIGHT COLUMN: SUMMARY */}
+          <div className="order-summary-card">
+            <h3>Rental Summary</h3>
+            
+            <div className="summary-book-details">
+              <img src={book.image_url} alt={book.title} />
+              <div>
+                <h4>{book.title}</h4>
+                <p>{book.author}</p>
+              </div>
+            </div>
 
-          <button
-            className="pay-btn"
-            onClick={() => navigate("/my-rentals")}
-          >
-            Go to My Rentals
-          </button>
+            <div className="pricing-table">
+              <div className="pricing-row">
+                <span>Daily Rental Rate</span>
+                <span>₹{book.price_per_day}</span>
+              </div>
+              <div className="pricing-row">
+                <span>Total Duration</span>
+                <span>{duration} Days</span>
+              </div>
+              <div className="pricing-row highlight-red">
+                <span>Late Fee (Per Day)</span>
+                <span>₹{book?.fine_rate || "10.00"}</span>
+              </div>
+            </div>
+
+            <div className="total-row">
+              <span>Grand Total</span>
+              <span className="amount">₹{totalPrice}</span>
+            </div>
+
+            <button 
+              className="pay-btn-checkout" 
+              style={{marginTop: "1.5rem"}}
+              disabled={loading}
+              onClick={confirmPayment}
+            >
+              {loading ? "Confirming..." : `Confirm Rental (₹${totalPrice})`}
+            </button>
+
+            <span className="secure-lock-text">Instant Confirmation Available</span>
+          </div>
+
         </div>
-      )}
+      </div>
     </div>
   );
 };

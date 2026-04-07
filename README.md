@@ -1,59 +1,54 @@
-## Login Page
-![Login](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Login_page.png)
+# Rental Library Management System
 
-## Home Page
-![Home Page](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Home_page.png)
+A comprehensive library management web application designed for renting and managing books.
 
-## Trending Books
-![Trending Books](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Trending_books.png)
+## Features
+- **Browse Books**: Discover books by genre, author, or title.
+- **User Authentication**: Secure login and registration for members and admins.
+- **Rental System**: Manage book rentals, returns, and late fee calculations.
+- **Admin Dashboard**: Manage the book catalog, user accounts, and rental history.
+- **Dynamic Recommendations**: Personalized book suggestions based on rental history.
 
-## Browse by Category
-![Browse Category](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Browse_by_category.png)
+## Technology Stack
+- **Frontend**: React.js, Vanilla CSS, Lucide-React icons.
+- **Backend**: Python (Flask), SQLite/JSON.
+- **Database**: Local JSON storage for book data.
 
-## Featured Authors
-![Featured Authors](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Featured_Authors.png)
+## Getting Started
 
-## Catalog
-![Catalog](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Catalog.png)
+Follow these steps to set up the project locally.
 
-## Catalog View
-![Catalog1](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Catalog1.png)
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [Python](https://www.python.org/) (v3.8 or higher)
 
-## Book Renting
-![Book Renting](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Book_Renting.png)
+### Installation
 
-## Confirm Payment
-![Confirm Payment](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Confirm_payment.png)
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Laxmiharika522/Rental-Library-Management-System.git
+   cd Rental-Library-Management-System
+   ```
 
-## Payment Page
-![Payment](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Payment.png)
+2. **Backend Setup**:
+   ```bash
+   cd backend
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   python app.py
+   ```
 
-## Check-in Rentals
-![Check-in Rentals](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Check_in_MyRentals.png)
+3. **Frontend Setup**:
+   ```bash
+   cd ../frontend
+   npm install
+   npm start
+   ```
 
-## About Page
-![About](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/About.png)
+## Usage
+- Access the frontend at `http://localhost:3000`.
+- The backend API runs at `http://localhost:5000`.
 
-## My Rentals
-![My Rentals](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/My_Rentals.png)
-
-## Profile Update
-![Profile Update](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Profile_Update.png)
-
-## Admin Login
-![Admin Login](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Admin_Login.png)
-
-## Admin Dashboard
-![Admin Dashboard](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Admin_Dashboard.png)
-
-## Admin Catalog Management
-![Admin Catalog](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Admin_Catalog.png)
-
-## Admin Books Management
-![Admin Books](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Admin_BooksManagement.png)
-
-## Admin Rentals Management
-![Admin Rentals](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Admin_RentalsManagement.png)
-
-## Admin User Management
-![Admin Users](https://github.com/Laxmiharika522/Rental-Library-Management-System/blob/7592e97264e2269828cb4baf3b66928ecf286e11/Admin_UserManagement.png)
+## License
+MIT License

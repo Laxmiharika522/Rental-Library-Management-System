@@ -22,3 +22,13 @@ export const getBooks = async (page = 1, perPage = 6, search = "") => {
 };
 
 export const getBookById = (id) => api.get(`/books/${id}`);
+
+export const getRecommendedBooks = async (limit = 5) => {
+    try {
+        const response = await api.get(`/books/recommended`, { params: { limit } });
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching recommended books:", error);
+        return { books: [] };
+    }
+};

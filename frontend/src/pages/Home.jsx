@@ -4,6 +4,7 @@ import Hero from "../components/common/Hero";
 import FeaturedRentals from "../components/books/FeaturedRentals";
 import Categories from "../components/books/Categories";
 import FeaturedAuthors from "../components/books/FeaturedAuthors";
+import RecommendedForYou from "../components/books/RecommendedForYou";
 import "../styles/Home.css";
 
 const Home = () => {
@@ -13,7 +14,6 @@ const Home = () => {
 
       <div className="section-wrapper bg-light">
         <div className="section-header">
-          <span className="section-eyebrow">🔥 What's Hot</span>
           <h2 className="section-title">Trending Books</h2>
           <p className="section-subtitle">
             Discover the most-rented books our members are loving right now.
@@ -24,7 +24,6 @@ const Home = () => {
 
       <div className="section-wrapper bg-alt">
         <div className="section-header">
-          <span className="section-eyebrow">🗂️ Explore</span>
           <h2 className="section-title">Browse by Category</h2>
           <p className="section-subtitle">
             From fiction to science — find books in every genre you love.
@@ -35,13 +34,23 @@ const Home = () => {
 
       <div className="section-wrapper bg-light">
         <div className="section-header">
-          <span className="section-eyebrow">✍️ Authors</span>
           <h2 className="section-title">Featured Authors</h2>
           <p className="section-subtitle">
             Explore works by our most celebrated and popular authors.
           </p>
         </div>
         <FeaturedAuthors />
+      </div>
+
+      {/* Recommended for You section */}
+      <div className="section-wrapper bg-alt">
+        <div className="section-header">
+          <h2 className="section-title">Recommended for You</h2>
+          <p className="section-subtitle">
+            Based on library trends and popular interest.
+          </p>
+        </div>
+        <RecommendedForYou />
       </div>
     </div>
   );

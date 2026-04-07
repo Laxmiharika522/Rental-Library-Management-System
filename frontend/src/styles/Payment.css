@@ -1,129 +1,314 @@
 /* =====================================================
-   PAYMENT PAGE — Magpie Books
-===================================================== */
+   PAYMENT PAGE — Premium Redesign
+==================================================== */
 
 .payment-page-wrapper {
   min-height: calc(100vh - 72px);
   background: var(--cream);
-  padding: 3rem 1.5rem 5rem;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 2%;
+  animation: fadeIn 0.8s ease backwards;
+}
+
+.payment-content-box {
+  max-width: 1200px;
+  width: 100%;
+  background: white;
+  border: 1px solid rgba(139, 79, 127, 0.2); /* More prominent purple border */
+  border-radius: var(--r-xl);
+  padding: 3.5rem 4rem;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08); /* Sophisticated deep shadow */
   display: flex;
   flex-direction: column;
+  height: fit-content;
+}
+
+/* ---------- Header & Badge ---------- */
+.secure-badge {
+  display: flex;
   align-items: center;
-  animation: fadeIn 0.6s ease both;
+  justify-content: center;
+  gap: 0.6rem;
+  background: #E8F9F5;
+  color: #0E735C;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin: 0 auto 1.5rem;
+  width: fit-content;
+  border: 1px solid rgba(14, 115, 92, 0.1);
+  text-transform: uppercase;
 }
 
 .payment-page-wrapper h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.6rem, calc(1.4rem + 1.2vw), 2.5rem);
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: 2.8rem;
   color: var(--purple);
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   text-align: center;
+  letter-spacing: -1px;
 }
 
-/* ---------- Payment Card ---------- */
-.payment-card {
+.subtitle {
+  color: var(--text-soft);
+  text-align: center;
+  margin-bottom: 3.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* ---------- Main Layout Split ---------- */
+.checkout-main {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* LEFT: Options */
+.checkout-options {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* ---------- 🚀 Confirmation & Info ---------- */
+.confirmation-notice {
+  background: #F0F9FF;
+  border: 1px solid #BAE6FD;
+  padding: 1.8rem;
+  border-radius: var(--r-lg);
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.confirmation-notice .info-icon {
+  font-size: 2rem;
+  background: white;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.confirmation-notice h3 {
+  font-size: 1.1rem;
+  color: #0369A1;
+  margin-bottom: 0.2rem;
+}
+
+.confirmation-notice p {
+  font-size: 0.9rem;
+  color: #0C4A6E;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.highlight-red {
+  color: #EF4444 !important;
+  font-weight: 800 !important;
+}
+
+.animate-in {
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Rental Terms */
+.terms-card {
+  background: white;
+  padding: 2.2rem;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(106, 30, 85, 0.05);
+}
+
+.terms-card h3 {
+  font-size: 1.1rem;
+  color: var(--crimson);
+  margin-bottom: 1.5rem;
+}
+
+.terms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.term-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-mid);
+  font-size: 0.92rem;
+}
+
+.term-item .check {
+  color: #10B981;
+  font-weight: 900;
+}
+
+/* RIGHT: Order Summary */
+.order-summary-card {
   background: white;
   border-radius: var(--r-xl);
-  box-shadow: var(--shadow-md);
-  padding: 2rem 2.2rem;
-  margin-bottom: 1.8rem;
-  gap: 2rem;
-  transition: transform 0.3s ease;
-  border: 1.5px solid #FFE4A3;
-  width: 100%;
-  max-width: 680px;
+  box-shadow: var(--shadow-xl);
+  padding: 3rem 2.2rem;
+  position: sticky;
+  top: 40px;
+  height: fit-content;
 }
 
-.payment-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--gold);
-}
-
-.payment-card img {
-  width: 160px;
-  height: 200px;
-  object-fit: contain;
-  border-radius: var(--r-md);
-  background: var(--cream);
-  flex-shrink: 0;
-}
-
-/* ---------- Payment Info ---------- */
-.payment-info {
-  text-align: left;
-  flex: 1;
-}
-
-.payment-info h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
+.order-summary-card h3 {
   font-weight: 700;
   color: var(--purple);
-  margin-bottom: 0.8rem;
+  margin-bottom: 2rem;
 }
 
-.payment-info p {
+.summary-book-details {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.summary-book-details img {
+  width: 56px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+}
+
+.summary-book-details h4 {
   font-size: 0.95rem;
-  color: var(--text-soft);
-  margin: 0.4rem 0;
-}
-
-.payment-info p strong {
-  color: var(--text-dark);
-}
-
-/* ---------- Pay Button ---------- */
-.pay-btn {
-  background: var(--grad-warm);
-  color: white;
-  padding: 1rem 2.5rem;
-  font-size: 1.05rem;
+  color: var(--purple);
   font-weight: 700;
-  font-family: var(--font-body);
+}
+
+.summary-book-details p {
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+
+.pricing-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.pricing-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  color: var(--text-mid);
+}
+
+.pricing-row .free {
+  color: #10B981;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.total-row {
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #EEE;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-row span:first-child {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--purple);
+}
+
+.total-row .amount {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--purple);
+}
+
+.pay-btn-checkout {
+  width: 100%;
+  padding: 1.4rem;
+  background: linear-gradient(135deg, var(--orange), #FF8552);
+  color: white;
   border: none;
-  border-radius: var(--r-full);
+  border-radius: var(--r-lg);
+  font-size: 1.2rem;
+  font-weight: 800;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 8px 24px rgba(255,107,53,0.35);
-  margin-top: 1.2rem;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.pay-btn:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(255,107,53,0.5);
+.pay-btn-checkout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
 }
 
-.pay-btn:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  transform: none;
+.pay-btn-checkout::after {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 3s infinite;
 }
 
-/* ---------- Success State ---------- */
-.success-card h1 {
-  color: #059669;
+@keyframes shimmer {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
 }
 
-/* ---------- Container fallback (for old usage) ---------- */
-.payment-container {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 3rem 1.5rem 5rem;
+.secure-lock-text {
   text-align: center;
+  font-size: 0.75rem;
+  color: #A0A0A0;
+  margin-top: 1.2rem;
+  display: block;
+}
+
+/* ---------- Success Card Redesign ---------- */
+.payment-success-container {
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.success-icon-big {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 640px) {
-  .payment-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .payment-info { text-align: center; }
-  .payment-card img { width: 130px; height: 165px; }
+@media (max-width: 900px) {
+  .checkout-main { grid-template-columns: 1fr; gap: 3rem; }
+  .order-summary-card { position: static; }
+}
+
+@media (max-width: 600px) {
+  .payment-methods { grid-template-columns: 1fr; }
 }

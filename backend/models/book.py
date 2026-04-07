@@ -14,6 +14,7 @@ class Book(db.Model):
     category = db.Column(db.String(50), nullable=False)
 
     price_per_day = db.Column(db.Numeric(10, 2), default=0.00)
+    fine_rate = db.Column(db.Numeric(10, 2), default=10.00)
 
     description = db.Column(db.Text)
     total_copies = db.Column(db.Integer, default=1)
@@ -36,6 +37,7 @@ class Book(db.Model):
             "genre": self.genre,
             "category": self.category,
             "price_per_day": float(self.price_per_day),
+            "fine_rate": float(self.fine_rate),
             "description": self.description,
             "total_copies": self.total_copies,
             "available_copies": self.available_copies,

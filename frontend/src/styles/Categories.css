@@ -20,7 +20,7 @@
 /* ---------- Category Grid ---------- */
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.6rem;
 }
 
@@ -127,12 +127,12 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
-  .category-grid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.4rem; }
+  .category-grid { grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
   .category-card { height: 190px; }
 }
 
 @media (max-width: 768px) {
-  .category-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.1rem; }
+  .category-grid { grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
   .category-card { height: 170px; }
   .category-card h3 { font-size: 1rem; }
 }

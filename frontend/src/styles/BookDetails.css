@@ -1,0 +1,329 @@
+/* =====================================================
+   BOOK DETAILS — Premium Redesign
+===================================================== */
+
+.book-details-container {
+  padding: 4rem 5%;
+  background: var(--cream);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  animation: fadeIn 0.8s ease both;
+}
+
+/* ---------- Main Book Card ---------- */
+.book-details-card {
+  width: 100%;
+  max-width: 1100px;
+  background: white;
+  border-radius: var(--r-xl);
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(106, 30, 85, 0.05);
+}
+
+.book-cover-section {
+  background: #FFF9E6; /* Specific cream-dk tone for the cover background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  position: relative;
+}
+
+.book-cover-section img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border-radius: var(--r-sm);
+  transition: transform 0.4s ease;
+}
+
+.book-details-card:hover .book-cover-section img {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* ---------- Info Section ---------- */
+.book-info-section {
+  padding: 3.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.category-badge {
+    background: #F3E8FF;
+    color: #6A1E55;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: var(--r-full);
+    letter-spacing: 1px;
+    display: inline-block;
+    align-self: flex-start;
+}
+
+.book-info-section h1 {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  color: var(--purple);
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+}
+
+.author-link {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.author-link span {
+  color: var(--orange);
+  cursor: pointer;
+}
+
+.rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.rating-summary .stars {
+    color: #FFB800;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+}
+
+.rating-summary .score-tag {
+    background: #FFF9E6;
+    color: var(--purple);
+    padding: 2px 10px;
+    border-radius: var(--r-sm);
+    font-weight: 800;
+    font-size: 0.95rem;
+    border: 1px solid #FFEBB0;
+}
+
+.rating-summary .count-text {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ---------- Details Grid ---------- */
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  padding: 1.5rem;
+  background: #FAFAFA;
+  border-radius: var(--r-md);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.detail-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: #B2B2B2;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.book-description {
+  color: var(--text-mid);
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+/* ---------- Price & Actions ---------- */
+.price-tag {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--purple);
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.price-unit {
+  font-size: 1rem;
+  color: var(--text-soft);
+  font-weight: 500;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.btn-rent-large {
+  flex: 1;
+  background: var(--grad-warm);
+  color: white;
+  border: none;
+  padding: 1.2rem;
+  border-radius: var(--r-full);
+  font-weight: 800;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.35);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-rent-large:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(255, 107, 53, 0.45);
+}
+
+.btn-saved {
+  padding: 1.2rem 2rem;
+  border-radius: var(--r-full);
+  font-weight: 700;
+  border: 1.5px solid #FFD4A8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  background: white;
+  color: #D61C4E;
+}
+
+.btn-saved.active {
+  background: #FFF5F7;
+  border-color: #FFDEE6;
+}
+
+/* ---------- Community Reviews ---------- */
+.reviews-section {
+  width: 100%;
+  max-width: 1100px;
+  background: white;
+  padding: 3.5rem 4rem;
+  border-radius: var(--r-xl);
+  margin-top: 2rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(106, 30, 85, 0.05);
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.reviews-section h2 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--purple);
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reviews-section h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, #6A1E5522, transparent);
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.review-card-item {
+  padding: 2rem;
+  background: #FFFCF9;
+  border-radius: var(--r-lg);
+  border: 1px solid #F8F0E8;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.review-card-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold);
+}
+
+.review-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.review-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.review-user {
+  font-weight: 800;
+  color: var(--purple);
+  font-size: 1.05rem;
+  letter-spacing: -0.2px;
+}
+
+.review-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #A0A0A0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.review-comment {
+  color: var(--text-mid);
+  line-height: 1.7;
+  font-style: italic;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.loading-text, .empty-text {
+  text-align: center;
+  color: #BDBDBD;
+  font-style: italic;
+  padding: 3rem 0;
+  font-size: 1.1rem;
+}
+
+/* Delete the old placeholder styles */
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .book-details-card { grid-template-columns: 1fr; }
+  .book-cover-section { padding: 4rem; }
+  .book-info-section { padding: 3rem; }
+}
+
+@media (max-width: 640px) {
+  .book-info-section h1 { font-size: 2.2rem; }
+  .action-buttons { flex-direction: column; }
+  .details-grid { grid-template-columns: 1fr; }
+}

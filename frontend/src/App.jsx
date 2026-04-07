@@ -22,6 +22,8 @@ const MyRentalsPage = lazy(() => import("./pages/MyRentalsPage"));
 const AuthorBooks   = lazy(() => import("./pages/AuthorBooks"));
 const UserProfilePage = lazy(() => import("./pages/UserProfilePage"));
 const ConfirmRental = lazy(() => import("./pages/ConfirmRental"));
+const Wishlist = lazy(() => import("./pages/Wishlist"));
+const History = lazy(() => import("./pages/History"));
 
 // Books
 const Categories  = lazy(() => import("./components/books/Categories"));
@@ -82,6 +84,8 @@ function App() {
             <Route path="/payment"          element={<PaymentPage />} />
             <Route path="/my-rentals"       element={<MyRentalsPage />} />
             <Route path="/profile"          element={<UserProfilePage />} />
+            <Route path="/wishlist"         element={<Wishlist />} />
+            <Route path="/history"          element={<History />} />
             <Route path="/authors/:authorName" element={<AuthorBooks />} />
 
             {/* BOOKS */}

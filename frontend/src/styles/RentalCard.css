@@ -1,98 +1,280 @@
 /* =====================================================
-   RENTAL CARD — Magpie Books
+   RENTAL CARD — Premium Dashboard Style
 ===================================================== */
 
-/* ---------- List Container ---------- */
-.rentals-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-  padding: 0 1rem 3rem;
-}
-
 .rental-card-wrapper {
-  width: 100%;
-  max-width: 680px;
-}
-
-/* ---------- Card ---------- */
-.rental-card {
   background: white;
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-sm);
-  padding: 1.8rem 2rem;
-  border: 1.5px solid #FFE4A3;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  animation: fadeInUp 0.5s ease both;
+  border-radius: var(--r-xl);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(106, 30, 85, 0.05);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: fadeIn 0.5s ease both;
 }
 
-.rental-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+.rental-card-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
   border-color: var(--gold);
 }
 
-/* ---------- Text ---------- */
-.rental-title {
-  font-size: 1.15rem;
-  font-weight: 700;
+.rental-card {
+  padding: 1.8rem;
+  display: grid;
+  grid-template-columns: 120px 1fr 200px;
+  gap: 2.2rem;
+  align-items: center;
+  position: relative;
+  text-align: left;
+}
+
+/* Book Cover */
+.rental-card img {
+  width: 120px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Info Section */
+.rental-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rental-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
   color: var(--purple);
+  margin-bottom: 0.2rem;
 }
 
-.rental-author,
-.rental-dates,
-.rental-return {
-  font-size: 0.9rem;
+.rental-info .author {
   color: var(--text-soft);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
 }
 
-.rental-dates span,
-.rental-return span {
-  color: var(--text-dark);
-  font-weight: 600;
-}
-
-/* ---------- Status Badge ---------- */
-.rental-status {
+.status-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 14px;
-  border-radius: var(--r-full);
-  font-size: 0.82rem;
-  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--r-sm);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   width: fit-content;
-  margin-top: 4px;
 }
 
-.rental-status.active {
-  background: rgba(16,185,129,0.1);
+.status-badge.active {
+  background: #E6FFFA;
   color: #059669;
 }
 
-.rental-status.returned {
-  background: rgba(59,130,246,0.1);
-  color: #2563EB;
+.status-badge.overdue {
+  background: #FEF2F2;
+  color: #DC2626;
 }
 
-.rental-status.late {
-  background: rgba(214,28,78,0.1);
-  color: var(--crimson);
+/* Dates Section */
+.rental-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
-/* ---------- Fine ---------- */
-.rental-fine {
-  color: var(--crimson);
+.date-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.date-group label {
+  font-size: 0.72rem;
   font-weight: 700;
-  font-size: 0.9rem;
-  margin-top: 4px;
+  color: #A0A0A0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 560px) {
-  .rental-card { padding: 1.3rem 1.2rem; }
+.date-group span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--purple);
+}
+
+/* Return Button */
+.btn-return-direct {
+  width: 100%;
+  background: var(--grad-warm);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: var(--r-md);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255,107,53,0.2);
+}
+
+.btn-return-direct:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255,107,53,0.35);
+}
+
+.btn-return-direct.late {
+  background: var(--grad-fire);
+}
+
+/* Animations */
+@keyframes slideOut {
+  to {
+    opacity: 0;
+    transform: translateX(100px);
+    margin-bottom: -200px;
+  }
+}
+
+.rental-card-wrapper.returning {
+  animation: slideOut 0.5s forwards;
+  pointer-events: none;
+}
+
+/* ---------- Review Section ---------- */
+.rental-review-section {
+  background: #FDFBFE;
+  padding: 1.5rem 1.8rem;
+  border-top: 1px solid #F0EEF5;
+}
+
+.review-divider {
+  border: 0;
+  height: 1px;
+  background: #EEE;
+  margin-bottom: 1rem;
+  display: none; /* Already have border-top */
+}
+
+/* Submission Form */
+.review-form h4, .submitted-review h4 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--purple);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.star-selector {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.star {
+  font-size: 2rem; /* Bigger stars for better UX */
+  color: #DDD;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.star.filled {
+  color: #FFB800;
+  text-shadow: 0 0 10px rgba(255, 184, 0, 0.3);
+}
+
+.star:hover {
+  color: #FFD700;
+  transform: scale(1.2);
+}
+
+.review-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1.5px solid #F0E0F8;
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.review-form textarea:focus {
+  border-color: var(--purple);
+}
+
+.btn-submit-review {
+  background: var(--grad-fire); /* Use a more prominent gradient */
+  color: white;
+  border: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: var(--r-md);
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(214, 28, 78, 0.25);
+}
+
+.btn-submit-review:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(214, 28, 78, 0.4);
+}
+
+.btn-submit-review:disabled {
+  background: #CCC;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Submitted Review View */
+.submitted-review .stars {
+  color: #FFB800;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.submitted-review p {
+  color: var(--text-mid);
+  font-style: italic;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .rental-card {
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+  }
+  .rental-dates {
+    grid-column: span 2;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed #EEE;
+    padding-top: 1.5rem;
+  }
+  .date-group { align-items: flex-start; }
+  .btn-return-direct { width: auto; padding: 0.8rem 2rem; }
+}
+
+@media (max-width: 500px) {
+  .rental-card { grid-template-columns: 1fr; text-align: center; }
+  .rental-card img { margin: 0 auto; width: 150px; height: auto; }
+  .status-badge { margin: 0 auto; }
+  .rental-dates { flex-direction: column; gap: 1rem; }
+  .btn-return-direct { width: 100%; }
 }

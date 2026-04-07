@@ -89,6 +89,8 @@ const Navbar = () => {
         {user ? (
           <>
             <Link to="/my-rentals" className="btn-nav-pill">My Rentals</Link>
+            <Link to="/wishlist" className="nav-link">♥ Wishlist</Link>
+            <Link to="/history" className="nav-link">📖 History</Link>
             <Link to="/profile" className="user-avatar-link">
               <span className="avatar-circle">{user.username[0].toUpperCase()}</span>
               <span className="avatar-name">{user.username}</span>

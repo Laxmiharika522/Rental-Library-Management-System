@@ -39,7 +39,7 @@ const About = () => {
           <li>User accounts and profiles</li>
           <li>Admin dashboard for librarians</li>
           <li>Rental history tracking</li>
-          <li>Author & category management</li>
+          <li>Author & category management</li>d:\ACADEMICS_24BCE5404\SEM4\DBMS\IMPLEMENTATION OF INVENTORY AND SALES MANAGEMENT SYSTEM FOR A RETAIL STORE.pdf
         </ul>
       </div>
 

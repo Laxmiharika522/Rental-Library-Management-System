@@ -15,7 +15,7 @@ const Catalog = () => {
   }, [page, searchTerm]);
 
   const loadBooks = async (pageNumber, search) => {
-    const data = await getBooks(pageNumber, 8, search); // 👈 pass search
+    const data = await getBooks(pageNumber, 10, search); // 👈 pass search and update limit to 10
     setBooks(data.books || []);
     setTotalPages(data.pages || 1);
   };

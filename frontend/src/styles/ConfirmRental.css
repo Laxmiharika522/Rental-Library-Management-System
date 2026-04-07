@@ -1,135 +1,301 @@
 /* =====================================================
-   CONFIRM RENTAL — Magpie Books
+   CONFIRM RENTAL — Premium Redesign
 ===================================================== */
 
 .confirm-rental-page {
   min-height: calc(100vh - 72px);
   background: var(--cream);
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 2rem 1.5rem;
+  padding: 4rem 2rem;
 }
 
 .confirm-rental {
-  max-width: 520px;
+  max-width: 1100px;
   width: 100%;
   background: white;
-  border-radius: var(--r-xl);
-  box-shadow: var(--shadow-lg);
-  border: 1.5px solid #FFE4A3;
-  padding: 2.8rem 2.5rem;
-  text-align: center;
-  animation: fadeInUp 0.6s ease both;
-}
-
-.confirm-rental h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: var(--purple);
-  margin-bottom: 1.5rem;
-}
-
-.confirm-rental img {
-  border-radius: var(--r-md);
-  margin-bottom: 1.4rem;
-  max-height: 220px;
-  object-fit: contain;
-  background: var(--cream);
-  transition: transform 0.3s ease;
-  width: 100%;
-}
-
-.confirm-rental img:hover {
-  transform: scale(1.03);
-}
-
-.confirm-rental h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--purple);
-  margin: 0.8rem 0 0.4rem;
-}
-
-.confirm-rental p {
-  font-size: 0.95rem;
-  color: var(--text-soft);
-  margin: 0.3rem 0;
-}
-
-.confirm-rental label {
-  display: block;
-  margin: 1.2rem 0 0.5rem;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--purple);
-  text-align: left;
-}
-
-.confirm-rental input[type="number"] {
-  width: 90px;
-  padding: 8px 12px;
-  border: 2px solid #F0E0F8;
-  border-radius: var(--r-md);
-  font-size: 1rem;
-  font-family: var(--font-body);
-  outline: none;
-  transition: all 0.25s ease;
-  margin-left: 10px;
-}
-
-.confirm-rental input[type="number"]:focus {
-  border-color: var(--orange);
-  box-shadow: 0 0 0 3px rgba(255,107,53,0.15);
-}
-
-/* ---------- Action Buttons ---------- */
-.confirm-actions {
+  border-radius: 20px 20px 0 0; /* Rounded top corners as seen in screenshot */
+  box-shadow: var(--shadow-xl);
   display: flex;
-  gap: 1rem;
-  margin-top: 1.8rem;
+  flex-direction: column;
+  animation: fadeIn 0.8s ease both;
+  overflow: hidden;
+}
+
+/* ---------- Header ---------- */
+.rental-header {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.rental-header h2 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--purple);
+  margin-bottom: 0.5rem;
+}
+
+.rental-header p {
+  color: var(--text-soft);
+  font-size: 1.05rem;
+}
+
+/* ---------- Main Body Split ---------- */
+.rental-body {
+  display: grid;
+  grid-template-columns: 35% 1fr;
+  padding: 0 4rem 4rem;
+  gap: 4rem;
+}
+
+/* Left side */
+.book-summary {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cover-placeholder {
+  background: var(--cream-dk);
+  width: 100%;
+  height: 250px;
+  border-radius: var(--r-md);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
-.confirm-rental button {
-  padding: 0.85rem 1.8rem;
-  font-size: 0.98rem;
+.cover-placeholder img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    box-shadow: var(--shadow-md);
+}
+
+.book-summary h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--purple);
+  margin-bottom: 0.4rem;
+}
+
+.book-summary .author {
+  font-size: 1rem;
+  color: var(--text-soft);
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.book-summary .rating {
+  font-size: 0.9rem;
+  color: #C4A0D4;
+}
+
+/* Right side */
+.rental-form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.description-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-mid);
+  opacity: 0.8;
+}
+
+.duration-input-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.duration-input-container input {
+  width: 80px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  text-align: center;
   font-weight: 700;
-  font-family: var(--font-body);
-  border: none;
-  border-radius: var(--r-full);
-  cursor: pointer;
-  transition: all 0.25s ease;
+  font-size: 1.1rem;
+  color: var(--purple);
 }
 
-.confirm-rental button:first-of-type,
-.btn-cancel {
+.days-label {
+    font-weight: 700;
+    color: var(--purple);
+    font-size: 1rem;
+}
+
+.hint-text {
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  margin-top: 0.6rem;
+}
+
+/* ---------- Summary Box ---------- */
+.summary-box {
+  background: #FFF5F5;
+  border-radius: var(--r-lg);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.summary-box h4 {
+  font-size: 1.2rem;
+  color: var(--purple);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-mid);
+}
+
+.summary-row.total {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(139, 79, 127, 0.1);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--purple);
+}
+
+/* ---------- Footer Buttons ---------- */
+.rental-footer {
+  padding: 2rem 4rem 3rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  background: #FFF9E6; /* Same bottom tint if desired */
+}
+
+.btn-secondary {
   background: #F3E8FF;
   color: var(--purple);
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: var(--r-md);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-.confirm-rental button:first-of-type:hover,
-.btn-cancel:hover {
-  background: #FFE4D1;
-}
-
-.confirm-rental button:last-of-type,
-.btn-confirm {
+.btn-proceed {
   background: var(--grad-warm);
   color: white;
-  box-shadow: 0 6px 18px rgba(255,107,53,0.35);
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: var(--r-md);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.3);
 }
 
-.confirm-rental button:last-of-type:hover,
-.btn-confirm:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(255,107,53,0.5);
+/* ---------- Community Reviews Section ---------- */
+.rental-reviews-section {
+    padding: 0 4rem 3rem;
+    border-top: 1px dashed rgba(139, 79, 127, 0.1);
+    background: #FFFCF7;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 480px) {
-  .confirm-rental { padding: 2rem 1.4rem; }
-  .confirm-rental h2 { font-size: 1.5rem; }
+.rental-reviews-section h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--purple);
+    margin-bottom: 1.5rem;
+    padding-top: 2rem;
+}
+
+.reviews-top-bar {
+    margin-bottom: 2rem;
+}
+
+.avg-rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avg-rating .stars {
+    color: #FFB800;
+    font-size: 1.4rem;
+}
+
+.avg-rating .score {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--purple);
+}
+
+.avg-rating .count {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+}
+
+.reviews-scroll-list {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--purple) #FDFBFE;
+}
+
+.review-tiny-card {
+    min-width: 280px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(139, 79, 127, 0.05);
+}
+
+.rev-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+}
+
+.rev-user {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--purple);
+}
+
+.rev-stars {
+    color: #FFB800;
+    letter-spacing: 2px;
+}
+
+.rev-text {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--text-mid);
+    font-style: italic;
+}
+
+.no-reviews, .loading-small {
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-soft);
+    font-style: italic;
 }

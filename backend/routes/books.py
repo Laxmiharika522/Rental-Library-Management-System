@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from sqlalchemy import func
 from models.database import db
 from models.book import Book
@@ -217,7 +217,7 @@ def get_categories():
 
 
 # --------------------------------------------------
-# GET featured authors (top 6 by rentals)
+# GET featured authors (top 5 by rentals)
 # --------------------------------------------------
 @books_bp.route("/featured-authors", methods=["GET"])
 def get_featured_authors():
@@ -248,12 +248,12 @@ def get_featured_authors():
 
 
 # --------------------------------------------------
-# GET featured books (top 6 most rented)
+# GET featured books (top 5 most rented)
 # --------------------------------------------------
 @books_bp.route("/featured", methods=["GET"])
 def get_featured_books():
     try:
-        limit = request.args.get("limit", 6, type=int)
+        limit = request.args.get("limit", 5, type=int)
 
         results = (
             db.session.query(
@@ -280,3 +280,66 @@ def get_featured_books():
     except Exception as e:
         print("FEATURED BOOKS ERROR:", e)
         return jsonify({"error": "Failed to load featured books"}), 500 
+
+
+# --------------------------------------------------
+# GET recommended books (based on popularity for now)
+# GET /api/books/recommended
+# --------------------------------------------------
+@books_bp.route("/recommended", methods=["GET"])
+@jwt_required(optional=True)
+def get_recommended_books():
+    try:
+        user_id = get_jwt_identity()
+        recommended_books = []
+        limit = request.args.get("limit", 10, type=int)
+        
+        if user_id:
+            user_id = int(user_id)
+            # Find categories the user has rented
+            rented_categories = (
+                db.session.query(Book.category)
+                .join(Rental, Rental.book_id == Book.id)
+                .filter(Rental.user_id == user_id)
+                .distinct().all()
+            )
+            
+            if rented_categories:
+                cat_list = [c[0] for c in rented_categories]
+                # Find books the user has already rented
+                rented_ids = [r[0] for r in db.session.query(Rental.book_id).filter(Rental.user_id == user_id).all()]
+                
+                # Recommend books from those categories that the user hasn't rented yet
+                recommended_results = (
+                    db.session.query(Book, func.count(Rental.id).label("rental_count"))
+                    .outerjoin(Rental, Rental.book_id == Book.id)
+                    .filter(Book.category.in_(cat_list))
+                    .filter(Book.id.notin_(rented_ids))
+                    .group_by(Book.id)
+                    .order_by(func.count(Rental.id).desc())
+                    .limit(limit).all()
+                )
+                recommended_books = [{**b.to_dict(), "rental_count": rc} for b, rc in recommended_results]
+
+        # If not enough recommendations, fill with popular books
+        if len(recommended_books) < limit:
+            remaining = limit - len(recommended_books)
+            exclude_ids = [b["id"] for b in recommended_books]
+            if user_id:
+                exclude_ids.extend([r[0] for r in db.session.query(Rental.book_id).filter(Rental.user_id == user_id).all()])
+
+            popular_results = (
+                db.session.query(Book, func.count(Rental.id).label("rental_count"))
+                .outerjoin(Rental, Rental.book_id == Book.id)
+                .filter(Book.id.notin_(exclude_ids))
+                .group_by(Book.id)
+                .order_by(func.count(Rental.id).desc())
+                .limit(remaining).all()
+            )
+            recommended_books.extend([{**b.to_dict(), "rental_count": rc} for b, rc in popular_results])
+        
+        return jsonify({"books": recommended_books[:limit]}), 200
+
+    except Exception as e:
+        print("RECOMMENDED BOOKS ERROR:", e)
+        return jsonify({"error": str(e)}), 500
