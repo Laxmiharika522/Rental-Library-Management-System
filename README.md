@@ -79,4 +79,4 @@ Follow these steps to set up the project locally.
 - The backend API runs at `http://localhost:5000`.
 
 ## License
-MIT License
+
